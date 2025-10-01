@@ -15,8 +15,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
-  String? title, content;
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -25,28 +23,18 @@ class _AddNoteFormState extends State<AddNoteForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomTextFormField(
-            label: 'Title',
-            controller: titleController,
-            onSave: (value) {
-              title = value;
-            },
-          ),
+          CustomTextFormField(label: 'Title', controller: titleController),
           SizedBox(height: 16),
           CustomTextFormField(
             label: 'Content',
             maxLines: 5,
             controller: contentController,
-            onSave: (value) {
-              content = value;
-            },
           ),
           SizedBox(height: 32),
           CustomButton(
             label: 'Add',
             onTap: () {
               if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
