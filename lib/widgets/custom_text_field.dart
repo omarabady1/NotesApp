@@ -5,8 +5,8 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
-    this.validate,
-    this.onSubmit,
+    //    this.validate,
+    this.onSave,
     this.suffixIcon,
     required this.label,
     this.prefixIcon,
@@ -20,8 +20,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool isPassword;
   final TextInputType keyboardType;
   final Function(String?)? onChanged;
-  final Function(String?)? onSubmit;
-  final FormFieldValidator<String?>? validate;
+  final Function(String?)? onSave;
+  //final FormFieldValidator<String?>? validate;
   final TextEditingController? controller;
   final int maxLines;
 
@@ -31,13 +31,17 @@ class CustomTextFormField extends StatelessWidget {
       minLines: null,
       maxLines: maxLines,
       controller: controller,
-      onFieldSubmitted: onSubmit,
-      validator: validate,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'Can\'t be Empty';
+        }
+        else{return null;}
+      },
+      onSaved: onSave,
       onChanged: onChanged,
       //style: TextStyle(color: kSecondaryColor),
       cursorColor: Color(0xff728582),
       decoration: InputDecoration(
-
         labelText: label,
         //hintText: 'Enter your password',
         //hintStyle: const TextStyle(color: Color(0xff728582)),
