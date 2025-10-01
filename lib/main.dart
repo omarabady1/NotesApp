@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/homescreen.dart';
 
-void main() async{
+void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNotesBox);
 
@@ -20,10 +21,13 @@ class NotesApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Color(0xff242329),
-        fontFamily: 'Lato'
+        fontFamily: 'Lato',
       ),
-      home: Homescreen(),
+      routes: {
+        Homescreen.id: (context) => Homescreen(),
+        EditNoteView.id: (context) => EditNoteView(),
+      },
+      initialRoute: Homescreen.id,
     );
   }
 }
-

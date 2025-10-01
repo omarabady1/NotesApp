@@ -4,6 +4,7 @@ import '../widgets/notes_view_body.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
+  static String id = 'Homescreen';
 
   @override
   Widget build(BuildContext context) {
