@@ -9,45 +9,50 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsGeometry.symmetric(horizontal: 24, vertical: 24),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if(state is AddNoteFailure)
-            {
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Padding(
+        padding: const EdgeInsetsGeometry.symmetric(
+            horizontal: 24, vertical: 24),
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is AddNoteFailure) {
               debugPrint(state.errorMessage);
             }
-          if(state is AddNoteSuccess)
-            {
+            if (state is AddNoteSuccess) {
               Navigator.pop(context);
             }
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            progressIndicator: CircularProgressIndicator(),
-            child: BottomSheet(
-              onClosing: () {},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              builder: (context) {
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Center(
-                    child: SingleChildScrollView(
-                      padding: EdgeInsets.only(
-                        //bottom: MediaQuery.of(context).viewInsets.bottom,
-                        top: 18,
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              progressIndicator: CircularProgressIndicator(),
+              child: BottomSheet(
+                onClosing: () {},
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                builder: (context) {
+                  return SizedBox(
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.4,
+                    child: Center(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.only(
+                          //bottom: MediaQuery.of(context).viewInsets.bottom,
+                          top: 18,
+                        ),
+                        child: AddNoteForm(),
                       ),
-                      child: AddNoteForm(),
                     ),
-                  ),
-                );
-              },
-            ),
-          );
-        },
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
