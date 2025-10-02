@@ -8,7 +8,6 @@ import 'custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
-
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -38,7 +37,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
             label: 'Add',
             onTap: () {
               if (formKey.currentState!.validate()) {
-                var note = NoteModel(title: titleController.text, content: contentController.text, date: DateTime.now());
+                var note = NoteModel(
+                  title: titleController.text,
+                  content: contentController.text,
+                  date: DateTime.now(),
+                );
                 BlocProvider.of<AddNoteCubit>(context).addNote(note);
               } else {
                 autovalidateMode = AutovalidateMode.always;
