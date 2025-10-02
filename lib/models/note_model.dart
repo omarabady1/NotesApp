@@ -6,11 +6,11 @@ part 'note_model.g.dart'; //[class file name].g.dart
 class NoteModel extends HiveObject
 {
   @HiveField(0)
-  final String title;
+   String title;
   @HiveField(1)
-  final String content;
+   String content;
   @HiveField(2)
-  final DateTime date;
+   final DateTime date;
 
   NoteModel({required this.title, required this.content, required this.date});
 }
