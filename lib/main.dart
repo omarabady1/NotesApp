@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/cubits/add_note_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/homescreen.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNotesBox);
-
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(const NotesApp());
 }
 
@@ -16,18 +19,21 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color(0xff242329),
-        fontFamily: 'Lato',
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => AddNoteCubit())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Color(0xff242329),
+          fontFamily: 'Lato',
+        ),
+        routes: {
+          Homescreen.id: (context) => Homescreen(),
+          EditNoteView.id: (context) => EditNoteView(),
+        },
+        initialRoute: Homescreen.id,
       ),
-      routes: {
-        Homescreen.id: (context) => Homescreen(),
-        EditNoteView.id: (context) => EditNoteView(),
-      },
-      initialRoute: Homescreen.id,
     );
   }
 }
