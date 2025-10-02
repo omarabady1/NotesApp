@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({super.key, required this.cardColor, required this.note});
   final Color cardColor;
-  final NoteModel note ;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()
-      {
+      onTap: () {
         Navigator.pushNamed(context, EditNoteView.id);
       },
       child: Container(
-        padding: const EdgeInsetsGeometry.symmetric(vertical: 24, horizontal: 24),
+        padding: const EdgeInsetsGeometry.symmetric(
+          vertical: 24,
+          horizontal: 24,
+        ),
         margin: const EdgeInsetsGeometry.only(right: 22, left: 22, bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -44,7 +48,10 @@ class NoteCard extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                  BlocProvider.of<NotesCubit>(context).fetchNotes();
+                },
                 icon: Icon(
                   Icons.delete,
                   size: 32,
