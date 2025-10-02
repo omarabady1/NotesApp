@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
-  const NoteCard({super.key, required this.cardColor});
+  const NoteCard({super.key, required this.cardColor, required this.note});
   final Color cardColor;
+  final NoteModel note ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,13 +28,13 @@ class NoteCard extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsetsGeometry.all(0),
               title: Text(
-                'Shai b Laban',
+                note.title,
                 style: const TextStyle(fontSize: 24, color: Colors.black87),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                  'Boil the Water & Tea: In a small pot, bring 1 cup of water to a boil. Add the loose black tea (or tea bags). Let it simmer for about 3–5 minutes, depending on how strong you like your tea. Add the Milk: Add 1 cup of milk directly into the pot with the tea. Bring it back to a gentle boil, stirring occasionally. Allow it to simmer for another 2–3 minutes. Be careful — milk can easily overflow if left unattended. Sweeten It: Add sugar to taste while it\'s still on the heat, and stir to dissolve. Egyptians usually drink it moderately sweet, but adjust to your preference. Strain and Serve: Pour the tea through a fine strainer into cups to remove the tea leaves (if using loose tea). Serve hot, ideally in a glass cup or mug for that authentic Egyptian feel.',
+                  note.content,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black.withValues(alpha: 0.5),
@@ -50,7 +53,7 @@ class NoteCard extends StatelessWidget {
               ),
             ),
             Text(
-              'September 27, 2025',
+              DateFormat('EEE, d/M/y').add_jm().format(note.date),
               style: TextStyle(color: Colors.black.withValues(alpha: 0.45)),
             ),
           ],
