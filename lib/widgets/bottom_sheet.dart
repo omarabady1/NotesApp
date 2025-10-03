@@ -26,7 +26,7 @@ class CustomBottomSheet extends StatelessWidget {
             //Prevents interaction with screen when in loading state
             absorbing: (state is AddNoteLoading) ? true : false,
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsetsGeometry.symmetric(
