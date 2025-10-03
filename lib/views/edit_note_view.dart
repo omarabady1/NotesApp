@@ -4,12 +4,12 @@ import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_search_icon.dart';
+import 'package:notes_app/widgets/edit_note_colors_list.dart';
 import '../widgets/custom_text_field.dart';
 
 class EditNoteView extends StatefulWidget {
   const EditNoteView({super.key});
   static String id = 'EditNote';
-
 
   @override
   State<EditNoteView> createState() => _EditNoteViewState();
@@ -75,6 +75,8 @@ class _EditNoteViewState extends State<EditNoteView> {
                     maxLines: 9,
                     controller: contentController,
                   ),
+                  SizedBox(height: 16),
+                  EditNoteColorsList(note: note),
                 ],
               ),
             ),

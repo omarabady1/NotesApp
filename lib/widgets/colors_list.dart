@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
-
-final List<Color> colorsList = [
-  Color(0xff984645),
-  Color(0xfff4b9b8),
-  Color(0xff85d2d0),
-  Color(0xff887bb0),
-  Color(0xffeeb5eb),
-  Color(0xffc26dbc),
-  Color(0xffc8f4f9),
-  Color(0xff3cacae),
-  Color(0xff059dc0),
-];
 
 class ColorsList extends StatefulWidget {
   const ColorsList({super.key});
@@ -35,17 +24,17 @@ class _ColorsListState extends State<ColorsList> {
               setState(() {
                 currentIndex = index;
                 BlocProvider.of<AddNoteCubit>(context).color =
-                    colorsList[index];
+                    kColorsList[index];
               });
             },
             child: ColorItem(
               isSelected: index == currentIndex,
-              color: colorsList[index],
+              color: kColorsList[index],
             ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 6),
-        itemCount: colorsList.length,
+        itemCount: kColorsList.length,
       ),
     );
   }

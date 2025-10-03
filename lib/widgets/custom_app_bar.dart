@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    required this.title,
-    required this.action,
-    super.key,
-  });
+  const CustomAppBar({required this.title, this.action, super.key});
 
   final String title;
-  final Widget action;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +15,11 @@ class CustomAppBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-              Text(
-              title,
-              style: TextStyle(fontSize: 28, color: Colors.white,
-              ),
-            ),
-            action,
+            Text(title, style: TextStyle(fontSize: 28, color: Colors.white)),
+            action ?? SizedBox(),
           ],
         ),
       ),
     );
   }
 }
-
-
