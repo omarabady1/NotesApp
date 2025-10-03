@@ -1,16 +1,19 @@
-# notes_app
+# 📝 Notiva
 
-A new Flutter project.
+A **minimal, fast, and modern notes app** — built with Flutter.  
+Notiva helps you capture your thoughts instantly with a clean and distraction-free interface, designed for dark mode lovers.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🗒️ Create, edit, and delete notes easily  
+- 🎨 Minimal and dark-themed UI  
+- ⚡ Lightweight and fast performance  
+- 💾 Local data storage (no internet required)  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📥 Download APK
+
+👉 [Download Latest APK](https://github.com/omarabady1/NotesApp/releases/download/v1.0.0/notiva.v1.0.0.apk)
