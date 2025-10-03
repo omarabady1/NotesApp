@@ -44,6 +44,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   title: titleController.text,
                   content: contentController.text,
                   date: DateTime.now(),
+                  color: BlocProvider.of<AddNoteCubit>(
+                    context,
+                  ).color.toARGB32(),
                 );
                 BlocProvider.of<AddNoteCubit>(context).addNote(note);
               } else {

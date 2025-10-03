@@ -53,7 +53,7 @@ class _NoteCardState extends State<NoteCard> {
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              color: widget.cardColor,
+              color: Color(widget.note.color),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,

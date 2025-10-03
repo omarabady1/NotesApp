@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 
 final List<Color> colorsList = [
   Color(0xff984645),
@@ -29,13 +31,17 @@ class _ColorsListState extends State<ColorsList> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: ()
-            {
+            onTap: () {
               setState(() {
                 currentIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).color =
+                    colorsList[index];
               });
             },
-            child: ColorItem(isSelected: index == currentIndex, color: colorsList[index],),
+            child: ColorItem(
+              isSelected: index == currentIndex,
+              color: colorsList[index],
+            ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 6),
