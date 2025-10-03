@@ -2,15 +2,23 @@ import 'package:hive/hive.dart';
 
 part 'note_model.g.dart'; //[class file name].g.dart
 
-@HiveType(typeId: 0)  //Generate Type Adaptor => flutter packages pub run build_runner build
-class NoteModel extends HiveObject
-{
+@HiveType(
+  typeId: 0,
+) //Generate Type Adaptor => flutter packages pub run build_runner build
+class NoteModel extends HiveObject {
   @HiveField(0)
-   String title;
+  String title;
   @HiveField(1)
-   String content;
+  String content;
   @HiveField(2)
-   final DateTime date;
+  final DateTime date;
+  @HiveField(3)
+  int color;
 
-  NoteModel({required this.title, required this.content, required this.date});
+  NoteModel({
+    required this.title,
+    required this.content,
+    required this.date,
+    required this.color,
+  });
 }
