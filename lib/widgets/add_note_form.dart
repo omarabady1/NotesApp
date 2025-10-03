@@ -4,6 +4,7 @@ import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/colors_list.dart';
 
+import '../constants.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -49,6 +50,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   ).color.toARGB32(),
                 );
                 BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                listviewController.animateTo(
+                  listviewController.position.maxScrollExtent,
+                  duration: Duration(milliseconds: 600),
+                  curve: Curves.bounceIn,
+                );
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

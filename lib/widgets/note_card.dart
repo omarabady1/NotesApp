@@ -8,9 +8,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../cubits/notes_cubit/notes_cubit.dart';
 
 class NoteCard extends StatefulWidget {
-  const NoteCard({super.key, required this.cardColor, required this.note});
+  const NoteCard({super.key, required this.note});
 
-  final Color cardColor;
   final NoteModel note;
 
   @override

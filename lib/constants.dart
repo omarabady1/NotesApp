@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 
 const kNotesBox = 'notes_box';
 const List<Color> kColorsList = [
@@ -12,3 +12,5 @@ const List<Color> kColorsList = [
   Color(0xff3cacae),
   Color(0xff059dc0),
 ];
+
+final ScrollController listviewController = ScrollController();
